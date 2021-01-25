@@ -75,6 +75,15 @@ module.exports = {
         });
       }
 
+      const userEmail = await User.findOne({ email });
+      if (userEmail) {
+        throw new UserInputError("Account with email exists", {
+          errors: {
+            username: "Account with email exists",
+          },
+        });
+      }
+
       password = await bcrypt.hash(password, 12);
       const newUser = new User({
         email,
