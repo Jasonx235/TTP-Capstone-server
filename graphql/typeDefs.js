@@ -8,6 +8,19 @@ module.exports = gql`
     username: String!
     createdAt: String!
   }
+  type Collection {
+    id: ID!
+    body: String!
+    createdAt: String!
+    username: String!
+    recipes: [Recipe]!
+  }
+  type Recipe {
+    id: ID!
+    createdAt: String!
+    username: String!
+    body: String!
+  }
   input RegisterInput {
     username: String!
     password: String!
@@ -15,10 +28,15 @@ module.exports = gql`
     email: String!
   }
   type Query {
-    getUser: User!
+    getCollections: [Collection]
+    getCollection(collectionId: ID!): Collection
   }
   type Mutation {
     register(registerInput: RegisterInput): User!
     login(username: String!, password: String!): User!
+    createCollection(body: String!): Collection!
+    deleteCollection(collectionId: ID!): String!
+    addRecipe(collectionId: ID!, body: String!): Collection!
+    deleteRecipe(collectionId: ID!, recipeID: ID!): Collection
   }
 `;
