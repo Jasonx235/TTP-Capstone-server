@@ -1,6 +1,5 @@
-const { AuthenticationError, UserInputError } = require("apollo-server");
-const { Collection } = require("mongoose");
-const Post = require("../../models/Collection");
+const { AuthenticationError } = require("apollo-server");
+const Collection = require("../../models/Collection");
 const checkAuth = require("../../utils/check-auth");
 
 module.exports = {
@@ -36,13 +35,12 @@ module.exports = {
 
       console.log(user);
       const newCollection = new Collection({
-        body,
         user: user.id,
+        body,
         username: user.username,
         createdAt: new Date().toISOString(),
       });
       const collection = await newCollection.save();
-
       return collection;
     },
 

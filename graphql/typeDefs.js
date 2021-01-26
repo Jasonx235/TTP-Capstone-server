@@ -1,13 +1,6 @@
 const { gql } = require("apollo-server");
 
 module.exports = gql`
-  type User {
-    id: ID!
-    email: String!
-    token: String!
-    username: String!
-    createdAt: String!
-  }
   type Collection {
     id: ID!
     body: String!
@@ -20,6 +13,13 @@ module.exports = gql`
     createdAt: String!
     username: String!
     body: String!
+  }
+  type User {
+    id: ID!
+    email: String!
+    token: String!
+    username: String!
+    createdAt: String!
   }
   input RegisterInput {
     username: String!
@@ -37,6 +37,6 @@ module.exports = gql`
     createCollection(body: String!): Collection!
     deleteCollection(collectionId: ID!): String!
     addRecipe(collectionId: ID!, body: String!): Collection!
-    deleteRecipe(collectionId: ID!, recipeID: ID!): Collection
+    deleteRecipe(collectionId: ID!, recipeId: ID!): Collection!
   }
 `;
