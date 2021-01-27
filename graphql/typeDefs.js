@@ -36,7 +36,7 @@ module.exports = gql`
     login(username: String!, password: String!): User!
     createCollection(body: String!): Collection!
     deleteCollection(collectionId: ID!): String!
-    addRecipe(collectionId: ID!, body: String!): Collection!
-    deleteRecipe(collectionId: ID!, recipeId: ID!): Collection!
+    addRecipe(collectionId: String!, body: String!): Collection!
+    deleteRecipe(collectionId: String!, recipeId: String!): Collection!
   }
 `;
