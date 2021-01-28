@@ -6,6 +6,7 @@ const resolvers = require("./graphql/resolvers");
 const { MONGODB } = require("./config");
 
 require("dotenv").config();
+const pubsub = new PubSub();
 
 const PORT = process.env.PORT || 5000;
 
